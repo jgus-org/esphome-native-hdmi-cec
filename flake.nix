@@ -1,7 +1,7 @@
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    flake-utils.url = "github:numtide/flake-utils";
+    flake-lib.url = "github:jgus-org/flake-lib/v1";
     treefmt-nix = {
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -12,11 +12,11 @@
     {
       self,
       nixpkgs,
-      flake-utils,
+      flake-lib,
       treefmt-nix,
       ...
     }:
-    flake-utils.lib.eachDefaultSystem (
+    flake-lib.lib.eachDefaultSystem (
       system:
       let
         pkgs = nixpkgs.legacyPackages.${system};
